@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -39,6 +40,7 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp( environment.firebase ),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    SweetAlert2Module.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
