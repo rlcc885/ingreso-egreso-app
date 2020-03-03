@@ -17,6 +17,7 @@ import { DetalleComponent } from './ingreso-egreso/detalle/detalle.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule,
+    AngularFireModule.initializeApp( environment.firebase ),
     AngularFirestoreModule,
     AngularFireAuthModule,
   ],
