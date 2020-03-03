@@ -12,4 +12,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(data: any): void {
+    console.log( data );
+  }
 }
