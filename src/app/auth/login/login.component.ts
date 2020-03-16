@@ -19,14 +19,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
 
-  constructor( private fb: FormBuilder,
+  constructor( private formBuilder: FormBuilder,
                private authService: AuthService,
                private store: Store<AppState>,
                private router: Router, ) { }
 
   ngOnInit(): void {
     this.uiSubscription = this.store.select('ui').subscribe( ui => this.cargando = ui.isLoading);
-    this.loginForm = this.fb.group( {
+    this.loginForm = this.formBuilder.group( {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     })
