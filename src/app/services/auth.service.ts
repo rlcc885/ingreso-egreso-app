@@ -10,12 +10,12 @@ import { map } from 'rxjs/operators';
 import 'firebase/firestore';
 
 import Swal from 'sweetalert2';
-import { User } from './user.model';
+import { User } from '../models/user.model';
 import { AppState } from '../app.reducer';
 import { Store } from '@ngrx/store';
 import { isLoading, stopLoading } from '../shared/ui.actions';
 import { Subscription } from 'rxjs';
-import { setUser, unSetUser } from './auth.actions';
+import { setUser, unSetUser } from '../auth/auth.actions';
 
 @Injectable({
   providedIn: 'root'

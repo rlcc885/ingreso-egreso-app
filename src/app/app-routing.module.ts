@@ -4,7 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { dashboardRoutes } from './dashboard/dashboard.routes';
-import { AuthGuardService } from './auth/auth-guard.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
  { path: 'login', component: LoginComponent },
