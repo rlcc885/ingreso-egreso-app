@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 import * as firebase from 'firebase';
 import { map } from 'rxjs/operators';
@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   constructor( private auth: AngularFireAuth,
-               private router: Router,
+              //  private router: Router,
                private firestore: AngularFirestore,
                private store: Store<AppState> ) { }
 
@@ -59,10 +59,10 @@ export class AuthService {
         const newUser = new User( nombre, user.email, user.uid);
         this.firestore.doc(`${ newUser.uid }/usuario`)
             .set( { ...newUser } )
-            .then( () => {
-              this.router.navigate(['/']);
-              this.store.dispatch( stopLoading() );
-            } );
+            // .then( () => {
+            //   this.router.navigate(['/']);
+            //   this.store.dispatch( stopLoading() );
+            // } );
       })
       .catch( error => {
         console.log( error );
@@ -75,28 +75,28 @@ export class AuthService {
     this.store.dispatch( isLoading() );
     return this.auth
       .signInWithEmailAndPassword(email, password)
-      .then( resp => {
-        console.log(resp);
-        this.router.navigate(['/']);
-        this.store.dispatch( stopLoading() );
-      })
-      .catch( error => {
-        console.log(error);
-        Swal.fire('Error en el login', error.message, 'error');
-        this.store.dispatch( stopLoading() );
-      })
+      // .then( resp => {
+      //   console.log(resp);
+      //   this.router.navigate(['/']);
+      //   this.store.dispatch( stopLoading() );
+      // })
+      // .catch( error => {
+      //   console.log(error);
+      //   Swal.fire('Error en el login', error.message, 'error');
+      //   this.store.dispatch( stopLoading() );
+      // });
   }
 
   logout() {
-    this.router.navigate(['/login']);
-    this.auth.signOut();
+    // this.router.navigate(['/login']);
+    return this.auth.signOut();
   }
 
   isAuth() {
     return this.auth.authState
       .pipe(
         map( fbUser => {
-          if ( fbUser == null ) this.router.navigate(['/login']);
+          // if ( fbUser == null ) this.router.navigate(['/login']);
           return fbUser != null;
         } )
       );
