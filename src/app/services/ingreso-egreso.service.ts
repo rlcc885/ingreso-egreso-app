@@ -21,4 +21,11 @@ export class IngresoEgresoService {
       .then( (ref) => console.log( 'exito!', ref ) )
       .catch( (err) => console.warn(err) );
   }
+
+  initIngresosEgresosListener (ui: string) {
+    const uid = this.authService.user.uid;
+    this.firestore.collection( `${ uid }/ingresos-egresos/items` )
+      .valueChanges()
+      .subscribe( algo => console.log(algo) );
+  }
 }
