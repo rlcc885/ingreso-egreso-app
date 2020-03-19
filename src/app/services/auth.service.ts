@@ -16,6 +16,7 @@ import { Store } from '@ngrx/store';
 import { isLoading, stopLoading } from '../shared/ui.actions';
 import { Subscription } from 'rxjs';
 import { setUser, unSetUser } from '../auth/auth.actions';
+import { unSetItems } from '../ingreso-egreso/ingreso-egreso.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -42,11 +43,13 @@ export class AuthService {
             const user = User.fromFirebase( firestoreUser );
             this._user = user;
             this.store.dispatch( setUser( { user }) );
+            this.store.dispatch( unSetItems() );
           });
       } else {
         this._user = null;
         this.userSubscription?.unsubscribe();
         this.store.dispatch( unSetUser() );
+        this.store.dispatch( unSetItems() );
       }
     });
   }
